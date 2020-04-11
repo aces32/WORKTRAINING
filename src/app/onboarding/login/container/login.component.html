@@ -1,0 +1,99 @@
+<div class="limiter">
+  <div class="container-login100">
+    <div class="wrap-login100">
+      <form
+        class="login100-form validate-form"
+        method="POST"
+        [formGroup]="form"
+        (ngSubmit)="SubmitForm(form)"
+      >
+        <span class="login100-form-title p-b-26">
+          Welcome
+        </span>
+        <span class="login100-form-title p-b-48">
+          <h2></h2>
+          <i class="zmdi zmdi-account-circle"></i>
+        </span>
+        <div class="form-group">
+          <input
+            type="email"
+            class="form-input"
+            name="email"
+            id="email"
+            placeholder="Email"
+            formControlName="emailAdd"
+          />
+          <span class="zmdi zmdi-email field-icon toggle-password"></span>
+          <div
+            class="small danger-cus-Alert color-grey"
+            *ngIf="emailAdd.touched && emailAdd.invalid"
+          >
+            <span *ngIf="!!emailAdd.errors.required"
+              >Email address is required</span
+            >
+          </div>
+        </div>
+
+        <div class="form-group">
+          <input
+            formControlName="passWord"
+            [type]="passwordType"
+            class="form-input"
+            name="password"
+            id="password"
+            placeholder="Password"
+          />
+          <span
+            *ngIf="showPassword"
+            (click)="hideShowPassword()"
+            toggle="#password"
+            class="fa fa-fw fa-eye field-icon"
+          ></span>
+          <span
+            *ngIf="!showPassword"
+            (click)="hideShowPassword()"
+            toggle="#password"
+            class="fa fa-fw fa-eye-slash field-icon"
+          ></span>
+          <div
+            class="small danger-cus-Alert color-grey"
+            *ngIf="passWord.touched && passWord.invalid"
+          >
+            <span *ngIf="!!passWord.errors.required">Password is required</span>
+          </div>
+        </div>
+
+        <div class="form-group" id="back-grey">
+          <button
+            name="submit"
+            id="submit"
+            class="btn-animate form-submit"
+            type="submit"
+          >
+            Submit
+            <i
+              class="fa fa-spinner fa-spin fs-22 float-r"
+              *ngIf="showLoader"
+            ></i>
+          </button>
+        </div>
+        <div class="text-center p-t-50">
+          <span class="txt1">
+            <a [routerLink]="'/resetPassword'" class="sign-up-text" href="#">
+              Forgot your password?
+            </a>
+          </span>
+        </div>
+
+        <div class="text-center">
+          <span class="txt1">
+            Don’t have an account?
+            <a [routerLink]="['/onboarding/sign-up']" class="sign-up-text" href="#">
+              <span class="txt3">Sign Up </span>
+            </a>
+          </span>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>

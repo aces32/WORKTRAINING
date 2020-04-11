@@ -1,0 +1,217 @@
+<div class="limiter">
+  <section class="signup">
+    <div class="container-login100">
+      <div class="signup-content">
+        <form
+          method="POST"
+          id="signup-form"
+          class="signup-form"
+          [formGroup]="form"
+          (ngSubmit)="SubmitForm(form)"
+        >
+          <h2 class="form-title">Create account</h2>
+          <div class="form-group">
+            <input
+              type="text"
+              class="form-input"
+              name="name"
+              formControlName="firstName"
+              id="firstName"
+              placeholder="First Name"
+            />
+            <div
+              class="small danger-cus-Alert"
+              *ngIf="firstName.touched && firstName.invalid"
+            >
+              <span *ngIf="!!firstName.errors.required"
+                >First name is required</span
+              >
+              <span *ngIf="!!firstName.errors.pattern"
+                >Only alphabets are allowed</span
+              >
+            </div>
+          </div>
+          <div class="form-group">
+            <input
+              type="text"
+              class="form-input"
+              name="name"
+              formControlName="lastName"
+              id="lastName"
+              placeholder="Last Name"
+            />
+            <div
+              class="small danger-cus-Alert"
+              *ngIf="lastName.touched && lastName.invalid"
+            >
+              <span *ngIf="!!lastName.errors.required"
+                >Last name is required</span
+              >
+              <span *ngIf="!!lastName.errors.pattern"
+                >Only alphabets are allowed</span
+              >
+            </div>
+          </div>
+          <div class="form-group">
+            <input
+              type="email"
+              class="form-input"
+              name="email"
+              formControlName="emailAdd"
+              id="email"
+              placeholder="Your Email"
+            />
+            <div
+              class="small danger-cus-Alert"
+              *ngIf="emailAdd.touched && emailAdd.invalid"
+            >
+              <span *ngIf="!!emailAdd.errors.required"
+                >Email address is required</span
+              >
+              <span *ngIf="!!emailAdd.errors.email"
+                >Email address is invalid</span
+              >
+            </div>
+          </div>
+          <div class="form-group">
+            <input
+              type="number"
+              class="form-input"
+              name="mobileNumber"
+              formControlName="mobileNumber"
+              id="mobileNumber"
+              placeholder="Mobile Number"
+            />
+            <div
+              class="small danger-cus-Alert"
+              *ngIf="mobileNumber.touched && mobileNumber.invalid"
+            >
+              <span *ngIf="!!mobileNumber.errors.required"
+                >Mobile Number is required</span
+              >
+            </div>
+          </div>
+          <div class="form-group">
+            <input
+              [type]="passwordType"
+              class="form-input"
+              name="password"
+              formControlName="passWord"
+              id="password"
+              placeholder="Password"
+            />
+            <span
+              *ngIf="showPassword"
+              (click)="hideShowPassword()"
+              toggle="#password"
+              class="fa fa-fw fa-eye field-icon"
+            ></span>
+            <span
+              *ngIf="!showPassword"
+              (click)="hideShowPassword()"
+              toggle="#password"
+              class="fa fa-fw fa-eye-slash field-icon"
+            ></span>
+            <div
+              class="small danger-cus-Alert"
+              *ngIf="passWord.touched && passWord.invalid"
+            >
+              <span *ngIf="!!passWord.errors.hasLower"
+                >Password must contain lower class</span
+              ><br />
+              <span *ngIf="!!passWord.errors.hasUpper"
+                >Password must contain upper class</span
+              ><br />
+              <span *ngIf="!!passWord.errors.hasNumber"
+                >Password must contain a number</span
+              ><br />
+              <span *ngIf="!!passWord.errors.valueLength"
+                >Password length must be greater than 8</span
+              ><br />
+              <span *ngIf="!!passWord.errors.required"
+                >Password is required</span
+              ><br />
+            </div>
+          </div>
+          <div class="form-group">
+            <input
+              [type]="rePasswordType"
+              class="form-input"
+              name="re_password"
+              id="re_password"
+              formControlName="re_password"
+              placeholder="Confirm your password"
+            />
+            <span
+              *ngIf="showRePassword"
+              (click)="hideShowRePassword()"
+              toggle="#password"
+              class="fa fa-fw fa-eye field-icon"
+            ></span>
+            <span
+              *ngIf="!showRePassword"
+              (click)="hideShowRePassword()"
+              toggle="#password"
+              class="fa fa-fw fa-eye-slash field-icon"
+            ></span>
+            <div
+              class="small danger-cus-Alert"
+              *ngIf="
+                form.hasError('notSame') ||
+                (re_password.touched && re_password.invalid)
+              "
+            >
+              <span>Password does not match</span>
+            </div>
+          </div>
+          <div class="form-group" id="checkbox-back">
+            <input
+              type="checkbox"
+              name="agreeTerm"
+              id="agreeTerm"
+              class="agreeTerm"
+              formControlName="agreeTerm"
+            />
+            <label for="agreeTerm" class="label-agree-term"
+              ><span><span></span></span>I agree all statements in
+              <a href="#" class="term-service">Terms of service</a></label
+            >
+            <div
+              class="small danger-cus-Alert back-grey"
+              *ngIf="agreeTerm.touched || agreeTerm.invalid"
+            >
+              <span *ngIf="form.hasError('required', 'agreeTerm')"
+                >Kindly agree to terms and conditions</span
+              >
+            </div>
+          </div>
+          <div class="form-group">
+            <button
+              type="submit"
+              name="submit"
+              id="submit"
+              [disabled]="!disableButton"
+              class="form-submit"
+              value="Sign up"
+              [disabled]="!disableButton"
+            >
+              Sign up
+              <i
+                class="fa fa-spinner fa-spin fs-22 float-r"
+                *ngIf="showLoader"
+              ></i>
+            </button>
+          </div>
+        </form>
+        <p class="loginhere">
+          Have already an account ?
+          <a [routerLink] ="['/onboarding/login']" class="loginhere-link">Login here</a>
+        </p>
+      </div>
+    </div>
+  </section>
+</div>
+
+<!-- JS -->
+<!-- <script src="vendor/jquery/jquery.min.js"></script>
+    <script src="js/main.js"></script> -->

@@ -1,0 +1,187 @@
+/*
+COLORS:
+
+Light green: #7ed56f
+Medium green: #55c57a
+Dark green: #28b485
+
+*/
+
+.header {
+  background: url(../../../../assets/img/background.jpg);
+  background-size: 100% 100%;
+  /* clip-path: polygon(0 0, 100% 0, 100% 95vh, 0 100%); */
+}
+.logo-box {
+  position: absolute;
+  top: 15px;
+  left: 20px;
+  animation: moveInRight 1.5s ease-out;
+}
+.phone-image {
+  height: 300px;
+  width: 150px;
+}
+.logo {
+  height: 120px;
+  width: 130px;
+}
+
+.text-box {
+  text-align: center;
+  padding-bottom: 30px;
+}
+.heading-primary {
+  color: #fff;
+  text-transform: uppercase;
+  backface-visibility: hidden;
+}
+.heading-primary-main {
+  display: block;
+  font-size: 1.7em;
+  /* letter-spacing: 7px; */
+  animation-name: moveInLeft;
+  animation-duration: 1.5s;
+  animation-timing-function: ease-out;
+
+  /*
+    animation-delay: 2s;
+    animation-iteration-count: 2;
+    */
+}
+.heading-primary-sub {
+  display: block;
+  font-size: 20px;
+  font-weight: 300;
+  letter-spacing: 2px;
+  animation: moveInRight 1.5s ease-out;
+}
+
+#navbarNavAltMarkup .navbar-nav {
+  padding-left: 85%;
+}
+
+#nav-props {
+  background: none !important;
+}
+.link-style {
+  padding: 10px;
+  color: #fff;
+  font-size: 1.1em;
+}
+
+.link-style:hover {
+  text-decoration: none;
+  color: #000;
+}
+@keyframes moveInLeft {
+  0% {
+    opacity: 0;
+    transform: translateX(-100px);
+  }
+  80% {
+    transform: translateX(10px);
+  }
+  100% {
+    opacity: 1;
+    transform: translate(0);
+  }
+}
+
+@keyframes moveInRight {
+  0% {
+    opacity: 0;
+    transform: translateX(100px);
+  }
+  80% {
+    transform: translateX(-10px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+@keyframes moveInButtons {
+  0% {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  100% {
+    opacity: 1;
+    transform: translate(0);
+  }
+}
+
+.pd-l-r {
+  margin: 0 8px;
+}
+.icon-store {
+  width: 20px;
+  height: 20px;
+}
+.btns:link,
+.btns:visited {
+  margin-top: 5%;
+  text-transform: uppercase;
+  text-decoration: none;
+  padding: 7px 30px;
+  display: inline-block;
+  border-radius: 100px;
+  transition: all 0.2s;
+  position: relative;
+}
+.btns:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 8px 15px rgba(0, 0, 0, 0.3);
+}
+.btns:active {
+  transform: translateY(-1px);
+  box-shadow: 0 5px 10px rgba(0, 0, 0, 0.1);
+}
+.btns-white {
+  background-color: #fff;
+  color: #000;
+}
+.btns::after {
+  content: "";
+  display: inline-block;
+  height: 100%;
+  width: 100%;
+  border-radius: 100px;
+  position: absolute; /* so not to add to element */
+  top: 0;
+  left: 0;
+  z-index: -1; /* this defines the position of the element when they are on top of each other */
+  transition: all 0.4s;
+}
+.btns-white::after {
+  background-color: #fff;
+}
+.btns:hover::after {
+  transform: scaleX(1.5) scaleY(1.6); /*size of pseudoelement after we hover*/
+  opacity: 0; /*fades out when hovering*/
+}
+
+.btns-animated {
+  animation: moveInButtons 0.5s ease-out 0.75s;
+  animation-fill-mode: backwards;
+}
+
+footer {
+  padding: 20px;
+  color: #fff;
+  background-color: rgb(75, 81, 82);
+}
+
+footer span {
+  font-size: 15px;
+}
+.social-links {
+  font-size: 20px;
+}
+
+@media (max-width: 991px) {
+  #navbarNavAltMarkup .navbar-nav {
+    padding-left: 75%;
+  }
+}
